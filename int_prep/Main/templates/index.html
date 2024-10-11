@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Wordle Game</h1>
+
+  {% if message %}
+      <p class="{{ message_class }}">{{ message }}</p>
+  {% endif %}
+
+  <form method="POST" action="/">
+      <label for="guess">Enter your guess:</label>
+      <input type="text" id="guess" name="guess" required>
+      <button type="submit">Submit</button>
+  </form>
+
+  <h2>Word: {{ word }}</h2>
+  <p>Hint: {{ hint }}</p>
+  <p>Remaining Chances: {{ remaining_chances }}</p>
+
+  <form action="{{ url_for('reset') }}" method="GET" style="margin-top: 20px;">
+    <button type="submit">Restart Game</button>
+  </form>
+
+</body>
+</html>
